@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Leon-Field
+  m_Controller: {fileID: 9100000, guid: 0a77835db716442ab93ee06915d9a271, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5be07448cc91547cabd8c5aef1fc94b0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7c809148d62c66f4f89e72dc8f5cbf55, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a39d33255f1bc4e1e88dc98f73181405, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6911be6b0d595564f9972415760cc346, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 09c6fc92223e64f01b206139eb9239da, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 51df6eede0aae4140b987f074031f131, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c9fd1449fd801451b827099328071fb0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b07f726008ea2a9419b6badde8112cef, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5133fdd4faaf34e098d904df64453d4c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dbf738cbcd02a794b8e59bb94ee74b04, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c630b88a86b6a405583ffcb917820ca4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9995113d5d1a9ce44af25e9d03a00031, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f20e78e70597b40dca4a6ac60ae447d3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c1283dc2f45223944920605a19cbc83d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1fafacde5dca54e53b991c10cac5ef22, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 96993448a6b91f64e99302064bf4b8b2, type: 2}
