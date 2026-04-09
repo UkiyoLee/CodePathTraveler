@@ -1,3 +1,4 @@
+using System;
 using MFramework.Event;
 
 public class UIManager : MonoBehaviour, IEventReceiver<PanelRequestEvent>
@@ -6,18 +7,18 @@ public class UIManager : MonoBehaviour, IEventReceiver<PanelRequestEvent>
     [SerializeField, Tooltip("探索模式下显示的总体UI根节点")]
     private GameObject fieldUIroot;
 
-    void OnEnable()
-    {
-        EventBus.Subscribe<PanelRequestEvent>(this);
-    }
+    private readonly Dictionary<Type, PanelController> _panelControllerDict = new();
+    private readonly List<PanelController> _allPanelList = new();
 
-    void OnDisable()
-    {
-        EventBus.Unsubscribe<PanelRequestEvent>(this);
-    }
+    # region 周期函数调用
 
-    public InquirePanelController inquirePanelController;
-    public RecruitPanelController recruitPanelController;
+    private void Awake()
+    {
+        _panelControllerDict.Clear();
+        _allPanelList.Clear();
+
+        GetPanelFromRoot(transform);
+    }
 
     void Update()
     {
@@ -40,43 +41,73 @@ public class UIManager : MonoBehaviour, IEventReceiver<PanelRequestEvent>
         }
     }
 
+    void OnEnable()
+    {
+        EventBus.Subscribe<PanelRequestEvent>(this);
+    }
+
+    void OnDisable()
+    {
+        EventBus.Unsubscribe<PanelRequestEvent>(this);
+    }
+
+    # endregion
+
+    private void GetPanelFromRoot(Transform root)
+    {
+        var panels = root.GetComponentsInChildren<PanelController>(true);
+
+        foreach (var panel in panels)
+        {
+            _allPanelList.Add(panel);
+            if (panel.PanelActionType is not null)
+            {
+                _panelControllerDict.Add(panel.PanelActionType, panel);
+            }
+        }
+    }
+
     private void TryHandleCancelByActionPanel()
     {
-        if (inquirePanelController.gameObject.activeSelf)
+        foreach (var panel in _allPanelList)
         {
-            inquirePanelController.ClosePanel();
-        }
-        if (recruitPanelController.gameObject.activeSelf)
-        {
-            recruitPanelController.ClosePanel();
+            if (panel.gameObject.activeSelf)
+            {
+                panel.gameObject.SetActive(false);
+                return;
+            }
         }
     }
 
     private bool IsAnyPanelActive()
     {
-        return inquirePanelController.gameObject.activeSelf || recruitPanelController.gameObject.activeSelf;
+        foreach (var panel in _allPanelList)
+        {
+            if (panel.gameObject.activeSelf)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void CloseAllPanels()
     {
-        inquirePanelController.gameObject.SetActive(false);
-        recruitPanelController.gameObject.SetActive(false);
+        foreach (var panel in _allPanelList)
+        {
+            panel.gameObject.SetActive(false);
+        }
     }
 
     #region 事件函数
     public void OnEvent(PanelRequestEvent evt)
     {
-        if (evt.actionBase is InquireAction)
-        {
-            inquirePanelController.gameObject.SetActive(true);
-            inquirePanelController.SetupPanel(evt.actionBase);
-        }
+        var panelType = evt.actionBase.GetType();
 
-        if (evt.actionBase is RecruitAction)
-        {
-            recruitPanelController.gameObject.SetActive(true);
-            recruitPanelController.SetupPanel(evt.actionBase);
-        }
+        _panelControllerDict.TryGetValue(panelType, out var panelController);
+        panelController?.gameObject.SetActive(true);
+        panelController?.SetupPanel(evt.actionBase);
     }
     #endregion
 }

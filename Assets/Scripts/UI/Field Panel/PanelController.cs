@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ public class PanelController : MonoBehaviour
 
     [Header("Action Icon")]
     [SerializeField] private Image ActionIcon;
+
+    public virtual Type PanelActionType => null;
 
 
     public virtual void SetupPanel(ActionBase actionBase)

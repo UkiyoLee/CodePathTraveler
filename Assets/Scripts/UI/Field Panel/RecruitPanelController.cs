@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class RecruitPanelController : PanelController
     [SerializeField] private Image characterImage;
     [SerializeField] private Button confirmButton;
     [SerializeField] private Button cancelButton;
+
+    public override Type PanelActionType => typeof(RecruitAction);
 
     public override void SetupPanel(ActionBase actionBase)
     {

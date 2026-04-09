@@ -1,5 +1,6 @@
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class InquirePanelController : PanelController
 {
@@ -11,6 +12,8 @@ public class InquirePanelController : PanelController
 
     private InquireAction _currentAction;
     private int _currentIndex = -1;
+
+    public override Type PanelActionType => typeof(InquireAction);
 
     [Header("Buttons")]
     [SerializeField] private Button confirmButton;
