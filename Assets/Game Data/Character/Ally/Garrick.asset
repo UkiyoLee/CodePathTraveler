@@ -15,4 +15,25 @@ MonoBehaviour:
   characterID: garrick
   characterName: "\u76D6\u91CC\u514B"
   Portrait: {fileID: 463951968, guid: 6fb869077a8ab4b5783fb67d40a70672, type: 3}
+  BaseLevel: 1
+  BaseStats:
+    MaxHP: 150
+    MaxSP: 80
+    PAttack: 10
+    PDefense: 10
+    MAttack: 10
+    MDefense: 10
+    Speed: 10
+    Accuracy: 10
+    Evasion: 10
   Job: 5
+  globalGrowthConfigSO: {fileID: 11400000, guid: a6a526b0c1bcc6a43bb8eb44773ab906,
+    type: 2}
+  growthProfile:
+    HP: 1
+    SP: 4
+    PAttack: 0
+    PDefense: 0
+    MAttack: 4
+    MDefense: 3
+    Speed: 3

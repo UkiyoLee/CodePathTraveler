@@ -15,4 +15,25 @@ MonoBehaviour:
   characterID: leon
   characterName: "\u91CC\u6602"
   Portrait: {fileID: 463951968, guid: 7df3e2e8a1fb24977b31196b82d158a3, type: 3}
+  BaseLevel: 1
+  BaseStats:
+    MaxHP: 150
+    MaxSP: 80
+    PAttack: 10
+    PDefense: 10
+    MAttack: 10
+    MDefense: 10
+    Speed: 10
+    Accuracy: 10
+    Evasion: 10
   Job: 1
+  globalGrowthConfigSO: {fileID: 11400000, guid: a6a526b0c1bcc6a43bb8eb44773ab906,
+    type: 2}
+  growthProfile:
+    HP: 1
+    SP: 3
+    PAttack: 0
+    PDefense: 1
+    MAttack: 2
+    MDefense: 3
+    Speed: 2
