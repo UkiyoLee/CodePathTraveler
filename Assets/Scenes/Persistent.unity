@@ -1942,8 +1942,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldUIroot: {fileID: 1956286142}
-  inquirePanelController: {fileID: 222123760}
-  recruitPanelController: {fileID: 1052613919}
 --- !u!1 &856511336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3384,7 +3382,7 @@ RectTransform:
   m_GameObject: {fileID: 1956286142}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.5249463, y: 0.5249463, z: 0.5249463}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 486106374}
@@ -3395,8 +3393,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1920, y: 1080}
-  m_SizeDelta: {x: 1920, y: 0}
+  m_AnchoredPosition: {x: 550.5, y: 259.5}
+  m_SizeDelta: {x: 2097.3574, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1956286147
 MonoBehaviour:
