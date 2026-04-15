@@ -22,6 +22,8 @@ IEventReceiver<InteractionChangedEvent>, IEventReceiver<InteractionMenuRequestEv
     private IReadOnlyList<ActionCommandInfo> _currentCommandList;
     private Transform _headAnchor;
 
+    private InteractionBase _target;
+
     # region 周期函数
     private void Awake()
     {
@@ -65,6 +67,11 @@ IEventReceiver<InteractionChangedEvent>, IEventReceiver<InteractionMenuRequestEv
 
     private void UpdateHeadIconPosition()
     {
+        if (_target is null || !_target.isActiveAndEnabled)
+        {
+            HideHeadIcons();
+            return;
+        }
         var worldPos = _headAnchor.position;
         var screenPos = Camera.main.WorldToScreenPoint(worldPos);
 
@@ -138,10 +145,10 @@ IEventReceiver<InteractionChangedEvent>, IEventReceiver<InteractionMenuRequestEv
     /// <param name="evt"></param>
     public void OnEvent(InteractionChangedEvent evt)
     {
+        _target = evt.target;
         if (!evt.inRange || evt.target is null)
         {
-            actionIconHolder.gameObject.SetActive(false);
-            ReleaseAll(_activeIcons, _iconPool);
+            HideHeadIcons();
             return;
         }
         // 启动显示头顶Icon
@@ -157,8 +164,7 @@ IEventReceiver<InteractionChangedEvent>, IEventReceiver<InteractionMenuRequestEv
     /// <exception cref="System.NotImplementedException"></exception>
     public void OnEvent(InteractionMenuRequestEvent evt)
     {
-        actionIconHolder.gameObject.SetActive(false);
-        ReleaseAll(_activeIcons, _iconPool);
+        HideHeadIcons();
 
         actionMenuHolder.gameObject.SetActive(true);
         OpenMenu(evt.target);

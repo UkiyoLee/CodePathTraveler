@@ -21,8 +21,7 @@ public class RecruitPanelController : PanelController
 
         npcNameText.text = recruitAction.CurrentCharacter.characterName;
         characterImage.sprite = recruitAction.CurrentCharacter.Portrait;
-        //TODO：目前还没有等级相关的变量，所以先用Lv.5代替
-        levelText.text = "Lv.5";
+        levelText.text = "Lv." + recruitAction.CurrentCharacter.BaseLevel;
 
         BindButtons();
         SetDefaultSelection();
