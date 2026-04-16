@@ -20,6 +20,24 @@ public class PartyFieldController : MonoBehaviour
 
     public void UpdateFollowers(List<CharacterDefinitionSO> partyMembers)
     {
-        
+        int followerCount = partyMembers.Count - 1;
+        while (followers.Count < followerCount)
+        {
+            int index = followers.Count;
+            var pos = ApplyFollowOffset(playerTrans.position, index);
+            GameObject followerObj = Instantiate(fieldFollowerPrefab, pos, Quaternion.identity, followersParent);
+            followers.Add(followerObj.GetComponent<FieldFollower>());
+        }
+
+        for (int i = 0; i < followers.Count; i++)
+        {
+            followers[i].SetupFollower(partyMembers[i + 1]);
+        }
+    }
+
+    private Vector3 ApplyFollowOffset(Vector3 position, int index)
+    {
+        position.z += zOffset * (index + 1);
+        return position;
     }
 }
