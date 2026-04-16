@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,7 +15,21 @@ public class PanelController : MonoBehaviour
     [Header("Action Icon")]
     [SerializeField] private Image ActionIcon;
 
+
+    private DOTweenAnimation _animation;
+
     public virtual Type PanelActionType => null;
+
+    # region 生命周期函数
+
+    public void OnEnable()
+    {
+        _animation = GetComponent<DOTweenAnimation>();
+        if (!_animation) return;
+        _animation.DOPlayForward();
+    }
+
+    # endregion
 
 
     public virtual void SetupPanel(ActionBase actionBase)
@@ -25,13 +40,20 @@ public class PanelController : MonoBehaviour
 
     public virtual void ClosePanel()
     {
-        gameObject.SetActive(false);
+        if (_animation)
+        {
+            _animation.DOPlayBackwards();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     protected void OnConfirm()
     {
         CurrentAction.Execute();
-        // ClosePanel();
+        ClosePanel();
     }
 
     protected void OnCancel()
