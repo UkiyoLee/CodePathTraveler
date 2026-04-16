@@ -11,4 +11,14 @@ public class RecruitAction : ActionBase
     {
         EventBus.Publish(new PanelRequestEvent(this));
     }
+
+    public override void Execute(object contextData = null)
+    {
+        PartyManager.Instance.RecruitMember(CurrentCharacter);
+    }
+
+    private void HideActionNPC()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
