@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PartyFieldController))]
 public class PartyManager : Singleton<PartyManager>
 {
+    private PartyFieldController fieldController;
+
     [Header("Initial Party")]
     [SerializeField] private CharacterDefinitionSO PlayerDefinition;
     [SerializeField] private List<CharacterRuntimeData> partyMembers = new();
@@ -14,6 +17,7 @@ public class PartyManager : Singleton<PartyManager>
     {
         base.Awake();
         InitParty();
+        fieldController = GetComponent<PartyFieldController>();
     }
 
     private void InitParty()

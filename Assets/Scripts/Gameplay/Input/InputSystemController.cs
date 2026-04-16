@@ -41,7 +41,7 @@ public class InputSystemController : Singleton<InputSystemController>, IEventRec
     {
         if (!_isInitialized || _currentMap != ActiveMap.Player)
         {
-            Debug.Log("InputSystemController not initialized or current map is not player");
+            // Debug.Log("InputSystemController not initialized or current map is not player");
             return Vector2.zero;
         }
 

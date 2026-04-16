@@ -10,6 +10,16 @@ public class PartyFieldController : MonoBehaviour
     [SerializeField] private Transform playerTrans;
 
     [Header("Settings")]
-    [SerializeField] private float followDistance = 1.2f;
+    [SerializeField] private float followDistance = 1.2f; //相邻两人的距离
     [SerializeField] private float followSpeed = 5f;
+    [SerializeField] private float zOffset = 0.01f;
+    [SerializeField] private float sampleDistance = 0.05f;
+
+    private List<Vector3> trail = new();
+    private List<FieldFollower> followers = new();
+
+    public void UpdateFollowers(List<CharacterDefinitionSO> partyMembers)
+    {
+        
+    }
 }
