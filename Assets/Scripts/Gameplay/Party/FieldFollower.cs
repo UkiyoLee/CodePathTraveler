@@ -74,7 +74,17 @@ public class FieldFollower : MonoBehaviour
         if (isMoving)
         {
             animator.SetFloat(moveXParam, step.x);
-            animator.SetFloat(moveYParam, step.y);
+            animator.SetFloat(moveYParam, step.z);
         }
+    }
+
+    public void SnapTo(Vector3 position)
+    {
+        bool enabled = characterController.enabled;
+        characterController.enabled = false;
+        transform.position = position;
+        characterController.enabled = enabled;
+
+        verticalVelocity = 0f;
     }
 }
