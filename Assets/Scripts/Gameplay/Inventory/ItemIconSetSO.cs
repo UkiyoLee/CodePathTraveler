@@ -1,7 +1,7 @@
 [CreateAssetMenu(menuName = "Inventory/Item Icon Set")]
 public class ItemIconSetSO : ScriptableObject
 {
-    public ItemIIconEntry[] itemIconEntries;
+    public ItemIconEntry[] itemIconEntries;
 
     public Sprite GetIcon(ItemIconKey itemIconKey)
     {
@@ -17,7 +17,7 @@ public class ItemIconSetSO : ScriptableObject
 }
 
 [System.Serializable]
-public class ItemIIconEntry
+public class ItemIconEntry
 {
     public ItemIconKey itemIconKey;
     public Sprite icon;

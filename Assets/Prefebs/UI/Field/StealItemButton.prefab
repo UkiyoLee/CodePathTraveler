@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 6017336579815240432}
   - component: {fileID: 3515795426233123431}
   - component: {fileID: 6210675640585479890}
+  - component: {fileID: 5294584049219712965}
   m_Layer: 5
   m_HasEditorInfo: 1
   m_Name: StealItemButton
@@ -389,6 +390,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5294584049219712965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5048656705707028545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e569aa554ee383248b8ee29fb27f7bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 7518975143276558340}
+  itemName: {fileID: 6586915489331283698}
+  itemDescription: {fileID: 3797865230167980984}
+  itemQuantity: {fileID: 0}
+  itemTips: {fileID: 8938234520237693882}
+  rateText: {fileID: 3974696265275047923}
 --- !u!1 &8889007315595916261
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,9 +693,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c236b892e84a2de44ae93db68c0c3689, type: 3}
+--- !u!114 &3797865230167980984 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4356127001476032604, guid: c236b892e84a2de44ae93db68c0c3689,
+    type: 3}
+  m_PrefabInstance: {fileID: 630688818719052772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4377563691645519052 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3747156348222215976, guid: c236b892e84a2de44ae93db68c0c3689,
+    type: 3}
+  m_PrefabInstance: {fileID: 630688818719052772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8938234520237693882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8415632122708592734, guid: c236b892e84a2de44ae93db68c0c3689,
     type: 3}
   m_PrefabInstance: {fileID: 630688818719052772}
   m_PrefabAsset: {fileID: 0}

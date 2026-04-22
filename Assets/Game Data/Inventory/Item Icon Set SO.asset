@@ -12,3 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0c423ff9f89e44da1e7dd44a922f05, type: 3}
   m_Name: Item Icon Set SO
   m_EditorClassIdentifier: 
+  itemIconEntries:
+  - itemIconKey: 0
+    icon: {fileID: 21300000, guid: 932d2875d77b74250b4dc59138d50766, type: 3}
+  - itemIconKey: 1
+    icon: {fileID: 21300000, guid: 57a9fab2691084c7d917fc64b6f5b7d2, type: 3}
+  - itemIconKey: 2
+    icon: {fileID: 21300000, guid: 1d9c392e99f3541828a57e3e10d38eef, type: 3}
+  - itemIconKey: 3
+    icon: {fileID: 21300000, guid: 166399ebd156d4237b428aec07857d3b, type: 3}
+  - itemIconKey: 4
+    icon: {fileID: 21300000, guid: 4235e58ca8a51430e83fa4124ab3c5b5, type: 3}
+  - itemIconKey: 5
+    icon: {fileID: 0}
+  - itemIconKey: 6
+    icon: {fileID: 0}
+  - itemIconKey: 7
+    icon: {fileID: 0}
