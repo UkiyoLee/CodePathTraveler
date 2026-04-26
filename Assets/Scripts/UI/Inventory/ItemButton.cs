@@ -47,7 +47,10 @@ public class ItemButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     protected virtual void OnClick()
     {
-
+        if (_onItemClick is not null)
+        {
+            _onItemClick.Invoke(CurrentItemDefinition);
+        }
     }
 
     #region UI状态回调

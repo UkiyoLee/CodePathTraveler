@@ -46,18 +46,6 @@ IEventReceiver<InteractionChangedEvent>, IEventReceiver<InteractionMenuRequestEv
         EventBus.Unsubscribe<GameModeChangedEvent>(this);
     }
 
-    private void Update()
-    {
-        if (GameModeManager.Instance.currentGameMode != GameMode.InteractionMenu) return;
-        var input = InputSystemController.Instance;
-
-        if (input.GetUICancelPressed())
-        {
-            CloseMenu(true);
-            GameModeManager.Instance.RequestChangeGameMode(GameMode.Explore);
-        }
-    }
-
     private void LateUpdate()
     {
         if (!actionIconHolder.gameObject.activeSelf || _headAnchor == null) return;
@@ -177,13 +165,20 @@ IEventReceiver<InteractionChangedEvent>, IEventReceiver<InteractionMenuRequestEv
     {
         if (evt.newMode == GameMode.InteractionMenu) return;
 
+        if (actionMenuHolder.gameObject.activeSelf)
+        {
+            HideActionMenu();
+        }
+
         if (evt.newMode == GameMode.Explore)
         {
             if (_currentCommandList is not null && _currentCommandList.Count > 0)
             {
                 ShowHeadIcons();
             }
+            return;
         }
+        HideHeadIcons();
     }
     #endregion
 

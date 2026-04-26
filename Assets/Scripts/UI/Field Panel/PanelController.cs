@@ -62,10 +62,17 @@ public class PanelController : MonoBehaviour
         ClosePanel();
     }
 
+    public virtual bool HandleCancelInput()
+    {
+        return false;
+    }
+
     protected void SetDefaultSelection()
     {
         FirstButton.Select();
         EventSystem.current.SetSelectedGameObject(FirstButton.gameObject);
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(transform as RectTransform);
     }
 
     public void RebindButtons(Button button, UnityAction unityAction)
