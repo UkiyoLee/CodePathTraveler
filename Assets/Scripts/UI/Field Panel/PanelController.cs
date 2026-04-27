@@ -50,7 +50,7 @@ public class PanelController : MonoBehaviour
         }
     }
 
-    protected void OnConfirm()
+    protected virtual void OnConfirm()
     {
         CurrentAction.Execute();
         ClosePanel();
