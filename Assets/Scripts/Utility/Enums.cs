@@ -60,3 +60,11 @@ public enum ItemIconKey
     Cure,           // 解除异常状态
     KeyItem         // 关键物品/任务物品
 }
+
+public enum PanelType
+{
+    Item,
+    Sell,
+    Buy,
+    Equipment
+}
