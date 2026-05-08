@@ -8,6 +8,10 @@ public class InventoryManager : Singleton<InventoryManager>
     [Header("Inventory")]
     public List<InventoryItem> CurrentInventory = new();
 
+    [Header("Currency")]
+    public int Currency;
+    private int _initialCurrency;
+
     #region Public Methods
     public void AddItem(ItemDefinitionSO itemDefinition, int quantity)
     {
@@ -46,7 +50,7 @@ public class InventoryManager : Singleton<InventoryManager>
     public int GetItemQuantity(ItemDefinitionSO itemDefinition)
     {
         if (itemDefinition == null)
-        { 
+        {
             return 0;
         }
 

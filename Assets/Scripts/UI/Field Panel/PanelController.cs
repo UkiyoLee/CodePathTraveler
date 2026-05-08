@@ -70,7 +70,7 @@ public class PanelController : MonoBehaviour
         return false;
     }
 
-    protected void SetDefaultSelection()
+    public void SetDefaultSelection()
     {
         FirstButton.Select();
         EventSystem.current.SetSelectedGameObject(FirstButton.gameObject);

@@ -29,10 +29,21 @@ public class ItemPanelController : PanelController
                 BuildBuyList(inventoryManager);
                 break;
             case PanelType.Sell:
+                BuildSellList(inventoryManager);
                 break;
             case PanelType.Item:
                 break;
         }
+
+        if (itemButtons.Count > 0)
+        {
+            FirstButton = itemButtons[0].CurrentButton;
+        }
+        else
+        {
+            FirstButton = null;
+        }
+        SetDefaultSelection();
     }
 
     private void ClearItemListView()
@@ -47,6 +58,39 @@ public class ItemPanelController : PanelController
 
     private void BuildBuyList(InventoryManager inventory)
     {
+        ShopAction shopAction = (ShopAction)CurrentAction;
 
+        foreach (var item in shopAction.itemsToBuy)
+        {
+            int ownedQuantity = inventory.GetItemQuantity(item);
+            AddItemButton(new InventoryItem(item, ownedQuantity));
+        }
+    }
+
+    private void BuildSellList(InventoryManager inventory)
+    {
+        // TODO: 已装备物品无法卖出的逻辑判断
+
+        foreach (var item in inventory.CurrentInventory)
+        {
+            AddItemButton(new InventoryItem(item.ItemDefinition, item.Quantity));
+        }
+    }
+
+    private void AddItemButton(InventoryItem inventoryItem, bool interactable = true, bool equippedNameFormat = false)
+    {
+        ItemButton itemButton = Instantiate(itemButtonPrefeb, itemButtonParent);
+
+        if (itemButton is ShopItemButton shopItemButton)
+        {
+            shopItemButton.SetupButton(inventoryItem, _currentPanelType, _onItemClick);
+        }
+        else
+        {
+            itemButton.SetupButton(inventoryItem, _onItemClick);
+        }
+
+        itemButton.CurrentButton.interactable = interactable;
+        itemButtons.Add(itemButton);
     }
 }
