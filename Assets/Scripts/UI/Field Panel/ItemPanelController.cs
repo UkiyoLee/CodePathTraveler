@@ -93,4 +93,35 @@ public class ItemPanelController : PanelController
         itemButton.CurrentButton.interactable = interactable;
         itemButtons.Add(itemButton);
     }
+
+    public void RefreshItemQuantity(ItemDefinitionSO itemDefinition)
+    {
+        var itemButton = itemButtons.Find(itemButton => itemButton.CurrentItemDefinition == itemDefinition);
+        if (itemButton is null)
+        {
+            return;
+        }
+        var newQuantity = InventoryManager.Instance.GetItemQuantity(itemDefinition);
+        itemButton.UpdateQuantity(newQuantity);
+    }
+
+    public void RemoveItemButton(ItemDefinitionSO pendingItem)
+    {
+        // 找到当前物品对应按钮
+        int targetIndex = itemButtons.FindIndex(itemButton => itemButton.CurrentItemDefinition == pendingItem);
+        ItemButton targetButton = itemButtons[targetIndex];
+        itemButtons.RemoveAt(targetIndex);
+        Destroy(targetButton.gameObject);
+        // 先继续出下一个按钮是什么，再删除当前按钮
+        // 重置FirstButton
+        FirstButton = itemButtons.Count > 0 ? itemButtons[0].CurrentButton : null;
+
+        if (itemButtons.Count > 0)
+        {
+            int newIndex = Mathf.Min(targetIndex, itemButtons.Count - 1);
+            FirstButton = itemButtons[newIndex].CurrentButton;
+            SetDefaultSelection();
+        }
+        // 没有按钮就重置FirstButton为null
+    }
 }

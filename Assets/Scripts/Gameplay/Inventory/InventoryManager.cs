@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.U2D.Aseprite;
 
 public class InventoryManager : Singleton<InventoryManager>
 {
@@ -63,6 +64,22 @@ public class InventoryManager : Singleton<InventoryManager>
         }
 
         return 0;
+    }
+
+    public bool TrySpendCurrency(int amount)
+    {
+        if (Currency < amount)
+        {
+            return false;
+        }
+
+        Currency -= amount;
+        return true;
+    }
+
+    public void AddCurrency(int amount)
+    {
+        Currency += amount;
     }
 
     #endregion

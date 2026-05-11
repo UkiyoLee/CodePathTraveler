@@ -27,6 +27,7 @@ public class ShopPanelController : PanelController
 
     private PanelType _currentShopType;
     private ItemDefinitionSO _pendingItem;
+    private ShopAction CurrentShopAction => (ShopAction)CurrentAction;
 
     private void Awake()
     {
@@ -129,5 +130,31 @@ public class ShopPanelController : PanelController
         var inventory = InventoryManager.Instance;
         int currentMoney = inventory.Currency;
         currencyAmountText.text = $"持有金额：￥{currentMoney}";
+    }
+
+    private void ExecuteTransaction()
+    {
+        // Action触发真实交易
+        CurrentShopAction.TryExecuteTransaction(_currentShopType, _pendingItem);
+        confirmPopup.gameObject.SetActive(false);
+        itemPanelCanvasGroup.interactable = true;
+        UpdateCurrencyDisplay();
+        // itemPanel刷新持有数
+        if (_currentShopType == PanelType.Buy)
+        {
+            itemPanel.RefreshItemQuantity(_pendingItem);
+            itemPanel.SetDefaultSelection();
+            return;
+        }
+        // 卖光了的从itemPanel移除按钮
+        // TODO: 装备相关目前不考虑
+        var remaining = InventoryManager.Instance.GetItemQuantity(_pendingItem);
+        if (remaining > 0)
+        {
+            itemPanel.RefreshItemQuantity(_pendingItem);
+            itemPanel.SetDefaultSelection();
+            return;
+        }
+        itemPanel.RemoveItemButton(_pendingItem);
     }
 }

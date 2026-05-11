@@ -17,7 +17,7 @@ public class ItemButton : MonoBehaviour, ISelectHandler, IDeselectHandler
     public Button CurrentButton => _button;
 
     protected InventoryItem _currentItem;
-    protected ItemDefinitionSO CurrentItemDefinition => _currentItem?.ItemDefinition;
+    public ItemDefinitionSO CurrentItemDefinition => _currentItem?.ItemDefinition;
 
     private Action<ItemDefinitionSO> _onItemClick;
 
@@ -50,6 +50,14 @@ public class ItemButton : MonoBehaviour, ISelectHandler, IDeselectHandler
         if (_onItemClick is not null)
         {
             _onItemClick.Invoke(CurrentItemDefinition);
+        }
+    }
+
+    public void UpdateQuantity(int quantity)
+    {
+        if (itemQuantity != null)
+        {
+            itemQuantity.text = quantity.ToString();
         }
     }
 

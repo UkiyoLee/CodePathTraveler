@@ -4966,8 +4966,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be19c81983f39243ac3155decaa3181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IconSet: {fileID: 0}
-  CurrentInventory: []
+  IconSet: {fileID: 11400000, guid: 7be3005f0a0822741bcfde8e791fe26f, type: 2}
+  CurrentInventory:
+  - ItemDefinition: {fileID: 11400000, guid: c2040b8aa3fd4074992f2b213263279f, type: 2}
+    Quantity: 5
+  Currency: 1500
 --- !u!1 &1326759851
 GameObject:
   m_ObjectHideFlags: 0
