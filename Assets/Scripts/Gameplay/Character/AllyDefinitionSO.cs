@@ -8,6 +8,20 @@ public class AllyDefinitionSO : CharacterDefinitionSO
     public GlobalGrowthConfigSO globalGrowthConfigSO;
     public GrowthProfile growthProfile;
 
+    [Header("Equipment Capability")]
+    public List<WeaponType> EquipableWeaponTypes = new();
+
+    [Header("Initial Equipment")]
+    public List<InitialEquipmentEntry> initialEquipment = new();
+
+    [System.Serializable]
+    public struct InitialEquipmentEntry
+    {
+        public EquipSlot slot;
+        public EquipmentItemSO item;
+    }
+
+
     # region 属性相关
     public StatBlock GetStatForLevel(int level)
     {

@@ -10,36 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6593c4d6300dd084e8d75efc4ad24c17, type: 3}
-  m_Name: Leon
+  m_Name: Lyra
   m_EditorClassIdentifier: 
-  characterID: leon
-  characterName: "\u91CC\u6602"
-  Portrait: {fileID: 463951968, guid: 7df3e2e8a1fb24977b31196b82d158a3, type: 3}
+  characterID: lyra
+  characterName: "\u83B1\u96C5"
+  Portrait: {fileID: 463951968, guid: 5d1b2675d5820476a9722a0edfc8ab33, type: 3}
   BaseLevel: 1
   BaseStats:
-    MaxHP: 150
-    MaxSP: 80
+    MaxHP: 90
+    MaxSP: 110
     PAttack: 10
-    PDefense: 10
-    MAttack: 10
-    MDefense: 10
-    Speed: 10
-    Accuracy: 10
-    Evasion: 10
-  fieldAnimator: {fileID: 22100000, guid: bad786afa2ffd5041851caea9362c560, type: 2}
+    PDefense: 12
+    MAttack: 14
+    MDefense: 15
+    Speed: 13
+    Accuracy: 20
+    Evasion: 15
+  fieldAnimator: {fileID: 0}
   battleAnimator: {fileID: 0}
-  Job: 1
+  Job: 4
   globalGrowthConfigSO: {fileID: 11400000, guid: a6a526b0c1bcc6a43bb8eb44773ab906,
     type: 2}
   growthProfile:
     HP: 1
-    SP: 3
+    SP: 4
     PAttack: 0
-    PDefense: 1
-    MAttack: 2
+    PDefense: 0
+    MAttack: 4
     MDefense: 3
     Speed: 2
-  EquipableWeaponTypes: 01000000
+  EquipableWeaponTypes: 06000000
   initialEquipment:
-  - slot: 0
-    item: {fileID: 11400000, guid: efdb22f6b7ba41844b1b9fd801637620, type: 2}
+  - slot: 7
+    item: {fileID: 11400000, guid: f391d3b311c83784881a9bfd73783e87, type: 2}

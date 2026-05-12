@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class EquipmentItemSO : MonoBehaviour
+[CreateAssetMenu(menuName = "Inventory/Equipment Item")]
+public class EquipmentItemSO : ItemDefinitionSO
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Equipment Config")]
+    public EquipmentCategory category = EquipmentCategory.Weapon;
+    public WeaponType weaponType = WeaponType.Sword;
 
-    // Update is called once per frame
-    void Update()
+    [Header("State Bonus")]
+    public StatBlock stateBlock = StatBlock.Zero;
+
+    public void OnValidate()
     {
-        
+        if (category != EquipmentCategory.Weapon)
+        {
+            weaponType = WeaponType.None;
+        }
     }
 }

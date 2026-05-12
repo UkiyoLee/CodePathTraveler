@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.AI;
 
 [Serializable]
 public class CharacterRuntimeData
@@ -15,6 +16,8 @@ public class CharacterRuntimeData
 
     public StatBlock EquipmentStats;
 
+    private bool hasAppliedInitialEquipment; // 是否已应用初始装备 
+
     public CharacterRuntimeData(CharacterDefinitionSO definition)
     {
         Definition = definition;
@@ -24,6 +27,8 @@ public class CharacterRuntimeData
         CurrentHP = stats.MaxHP;
         CurrentSP = stats.MaxSP;
         CurrentBP = 0;
+
+        ApplyInitialEquipment();
     }
 
     public StatBlock GetBaseStats()
@@ -59,6 +64,41 @@ public class CharacterRuntimeData
     {
         CurrentSP += amount;
         CurrentSP = Mathf.Clamp(CurrentSP, 0, GetTotalStats().MaxSP);
+    }
+
+    public void ResetBattleBP()
+    {
+        CurrentBP = 0;
+    }
+
+    # endregion
+
+    # region 装备系统
+
+    public void ApplyInitialEquipment()
+    {
+        if (hasAppliedInitialEquipment) return;
+
+        AllyDefinitionSO allyDef = Definition as AllyDefinitionSO;
+        if (allyDef == null || allyDef.initialEquipment == null || allyDef.initialEquipment.Count == 0)
+        {
+            hasAppliedInitialEquipment = true;
+            return;
+        }
+
+        if (InventoryManager.Instance is null) return;
+
+        for (int i = 0; i < allyDef.initialEquipment.Count; i++)
+        {
+            var entry = allyDef.initialEquipment[i];
+            var item = entry.item;
+
+            if (item == null) continue;
+
+            // TODO: 装备物品
+            InventoryManager.Instance.AddItem(item, 1);
+        }
+        hasAppliedInitialEquipment = true;
     }
 
     # endregion

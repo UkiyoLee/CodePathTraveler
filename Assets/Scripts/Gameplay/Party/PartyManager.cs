@@ -20,6 +20,11 @@ public class PartyManager : Singleton<PartyManager>
         fieldController = GetComponent<PartyFieldController>();
     }
 
+    public void Start()
+    {
+        ApplyInitialEquipment();
+    }
+
     private void InitParty()
     {
         if (partyMembers.Count == 0)
@@ -49,5 +54,13 @@ public class PartyManager : Singleton<PartyManager>
             defs.Add(member.Definition);
         }
         fieldController.UpdateFollowers(defs);
+    }
+
+    private void ApplyInitialEquipment()
+    {
+        foreach (var member in partyMembers)
+        {
+            member.ApplyInitialEquipment();
+        }
     }
 }
